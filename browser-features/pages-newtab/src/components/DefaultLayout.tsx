@@ -1,6 +1,7 @@
 import { Clock } from "./Clock/index.tsx";
 import { TopSites } from "./TopSites/index.tsx";
 import { SearchBar } from "./SearchBar/index.tsx";
+import { AlazabDashboard } from "./AlazabDashboard.tsx";
 import { useComponents } from "@/contexts/ComponentsContext.tsx";
 
 export function DefaultLayout() {
@@ -8,6 +9,7 @@ export function DefaultLayout() {
 
   return (
     <>
+      <AlazabDashboard />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-4 w-full">
         <div className="lg:col-span-2 mb-10">
           {components.topSites && <TopSites />}
