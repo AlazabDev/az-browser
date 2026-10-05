@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import {
   BadgeInfo,
   Briefcase,
+  Building2,
   Command,
   Cpu,
   Gauge,
@@ -39,6 +40,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   const overview = [
     { title: t("pages.home"), url: "/overview/home", icon: House },
+    { title: "Alazab Browser", url: "/overview/alazab", icon: Building2 },
   ];
 
   const [isFloorpOSVisible, setIsFloorpOSVisible] = useState<boolean | null>(
