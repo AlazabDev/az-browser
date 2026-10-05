@@ -1,0 +1,108 @@
+// SPDX-License-Identifier: MPL-2.0
+
+import type { AlazabPlugin } from "./types";
+
+export const ALAZAB_PLUGINS: readonly AlazabPlugin[] = [
+  {
+    id: "chatgpt",
+    name: "ChatGPT",
+    category: "ai",
+    url: "https://chatgpt.com",
+    enabledByDefault: true,
+    surface: { sidebar: true, workspace: true, webPanel: true, pwa: false },
+    security: { requiresAuth: true, allowPageContext: false },
+  },
+  {
+    id: "uberfix",
+    name: "UberFix",
+    category: "operations",
+    url: "https://uberfix.alazab.com",
+    enabledByDefault: true,
+    surface: { sidebar: true, workspace: true, webPanel: true, pwa: true },
+    security: { requiresAuth: true, allowPageContext: false },
+  },
+  {
+    id: "bim",
+    name: "BIM",
+    category: "operations",
+    url: "https://bim.alazab.com",
+    enabledByDefault: true,
+    surface: { sidebar: true, workspace: true, webPanel: true, pwa: true },
+    security: { requiresAuth: true, allowPageContext: false },
+  },
+  {
+    id: "erpnext",
+    name: "ERPNext",
+    category: "operations",
+    url: "https://bim.alazab.com",
+    enabledByDefault: true,
+    surface: { sidebar: true, workspace: true, webPanel: true, pwa: true },
+    security: { requiresAuth: true, allowPageContext: false },
+  },
+  {
+    id: "daftra",
+    name: "Daftra",
+    category: "finance",
+    url: "https://alazab-co.daftra.com",
+    enabledByDefault: true,
+    surface: { sidebar: true, workspace: true, webPanel: true, pwa: true },
+    security: { requiresAuth: true, allowPageContext: false },
+  },
+  {
+    id: "whatsapp",
+    name: "WhatsApp",
+    category: "communication",
+    url: "https://whatsapp.alazab.com",
+    enabledByDefault: true,
+    surface: { sidebar: true, workspace: true, webPanel: true, pwa: true },
+    security: { requiresAuth: true, allowPageContext: false },
+  },
+  {
+    id: "github",
+    name: "GitHub",
+    category: "development",
+    url: "https://github.com/AlazabDev",
+    enabledByDefault: true,
+    surface: { sidebar: true, workspace: true, webPanel: true, pwa: false },
+    security: { requiresAuth: true, allowPageContext: false },
+  },
+  {
+    id: "supabase",
+    name: "Supabase",
+    category: "development",
+    url: "https://supabase.com/dashboard",
+    enabledByDefault: true,
+    surface: { sidebar: true, workspace: true, webPanel: true, pwa: false },
+    security: { requiresAuth: true, allowPageContext: false },
+  },
+  {
+    id: "azure",
+    name: "Azure",
+    category: "development",
+    url: "https://ai.azure.com",
+    enabledByDefault: true,
+    surface: { sidebar: true, workspace: true, webPanel: true, pwa: false },
+    security: { requiresAuth: true, allowPageContext: false },
+  },
+  {
+    id: "vercel",
+    name: "Vercel",
+    category: "development",
+    url: "https://vercel.com",
+    enabledByDefault: false,
+    surface: { sidebar: false, workspace: true, webPanel: true, pwa: false },
+    security: { requiresAuth: true, allowPageContext: false },
+  },
+  {
+    id: "mcp",
+    name: "MCP",
+    category: "development",
+    url: "https://mcp.alazab.com",
+    enabledByDefault: true,
+    surface: { sidebar: true, workspace: true, webPanel: true, pwa: false },
+    security: { requiresAuth: true, allowPageContext: false },
+  },
+] as const;
+
+export const getAlazabPlugin = (id: string) =>
+  ALAZAB_PLUGINS.find((plugin) => plugin.id === id);
