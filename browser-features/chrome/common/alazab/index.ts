@@ -8,6 +8,7 @@ import { workspacesDataStore } from "../workspaces/data/data.ts";
 import { ALAZAB_BRANDING, ALAZAB_WORKSPACE_PRESETS } from "./defaults";
 import { ALAZAB_PLUGINS } from "./registry";
 
+const SIDEBAR_SEEDED_PREF = "floorp.alazab.phase1.sidebarSeeded";
 const WORKSPACES_SEEDED_PREF = "floorp.alazab.phase1.workspacesSeeded";
 const WORKSPACE_RETRY_LIMIT = 40;
 const WORKSPACE_RETRY_DELAY_MS = 250;
@@ -39,6 +40,10 @@ export default class AlazabBrowser extends NoraComponentBase {
   }
 
   private seedSidebarPanels(): void {
+    if (Services.prefs.getBoolPref(SIDEBAR_SEEDED_PREF, false)) {
+      return;
+    }
+
     const sidebarPlugins = ALAZAB_PLUGINS.filter(
       (plugin) => plugin.enabledByDefault && plugin.surface.sidebar,
     );
@@ -61,6 +66,9 @@ export default class AlazabBrowser extends NoraComponentBase {
 
       return additions.length > 0 ? [...currentPanels, ...additions] : currentPanels;
     });
+
+    Services.prefs.setBoolPref(SIDEBAR_SEEDED_PREF, true);
+    this.logger?.info("Alazab sidebar panels seeded");
   }
 
   private seedWorkspacePresets(): void {
