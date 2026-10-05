@@ -38,6 +38,9 @@ jobs:
       - name: Check Alazab product layer
         run: deno check browser-features/chrome/common/alazab/index.ts
 
+      - name: Check Alazab New Tab integration
+        run: deno check browser-features/pages-newtab/src/App.tsx
+
       - name: Run host tests
         run: deno task test:host
 
